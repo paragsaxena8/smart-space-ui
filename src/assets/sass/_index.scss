@@ -1,0 +1,72 @@
+section {
+  margin: 1.25rem 0;
+}
+
+.container {
+  margin: 0 12.5px;
+  padding: 1rem 0;
+}
+
+.hStyle {
+  width: min-content;
+  border-style: none none double none;
+  transition: all 0.1s;
+}
+
+.navbar {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1),
+    -10px -10px 10px rgba(255, 255, 255, 0.1);
+  margin: 0 2rem;
+
+  & > button {
+    margin: 0 0.5rem;
+  }
+
+  &-item {
+    margin: 0 0.5rem;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-radius: 0.25rem;
+    padding: 0.3125rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.1s;
+
+    &:hover {
+      background-color: thistle;
+      box-shadow: 30px 30px 80px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.active {
+  color: #000 !important;
+  background: thistle;
+}
+
+.themeToggle {
+  display: flex;
+}
+
+.profile-pic {
+  border-radius: 25% 75% 22% 78% / 57% 41% 59% 43%;
+  border: 2px dotted #000;
+}
+
+.sidenav {
+  width: 200px;
+
+  &-container {
+    height: auto;
+    width: 100%;
+  }
+
+  & .mat-toolbar {
+    background: inherit;
+  }
+}
+
+

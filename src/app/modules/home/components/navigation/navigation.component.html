@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()" fxShow fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <button mat-icon-button fxShow fxHide.lt-md>
+    <mat-icon>speaker_notes</mat-icon>
+  </button>
+  <span>Smart Space</span>
+  <span class="menu-spacer"></span>
+  <div fxShow fxHide.lt-md class="navbar">
+  <button mat-raised-button color="primary" routerLink="/home" routerLinkActive="accent">Home</button>
+  <button mat-raised-button color="primary" routerLink="/about" routerLinkActive="accent">About</button>
+  <button mat-raised-button color="primary" routerLink="/contact" routerLinkActive="accent">Contact</button>
+  </div>
+</mat-toolbar>
+<div class="container">
+  <router-outlet name="homeApp" fxShow fxHide.lt-md></router-outlet>
+</div>
+
+<mat-sidenav-container fxShow fxHide.gt-sm>
+  <mat-sidenav class="sidenav" #sidenav>
+    <mat-nav-list>
+      <button mat-raised-button color="primary" routerLink="/home" routerLink="accent">Home</button>
+      <button mat-raised-button color="primary" routerLink="/about" routerLink="accent">About</button>
+      <button mat-raised-button color="primary" routerLink="/contact" routerLink="accent">Contact</button>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- <router-outlet name="homeApp"></router-outlet> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
