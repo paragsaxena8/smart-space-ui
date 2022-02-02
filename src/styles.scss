@@ -1,10 +1,13 @@
 @use "@angular/material" as mat;
 @include mat.core();
 
-$primary: mat.define-palette(mat.$blue-palette);
-$accent: mat.define-palette(mat.$green-palette);
-$warn: mat.define-palette(mat.$red-palette);
-$text: mat.define-palette(mat.$grey-palette, 100);
+$primary: mat.define-palette(mat.$indigo-palette, 500);
+$accent: mat.define-palette(mat.$teal-palette);
+$warn: mat.define-palette(mat.$orange-palette);
+$danger: mat.define-palette(mat.$red-palette);
+$text: mat.define-palette(mat.$brown-palette, 100);
+$success: mat.define-palette(mat.$green-palette, 100);
+$info: mat.define-palette(mat.$blue-palette, 100);
 $theme: mat.define-light-theme(
   (
     color: (
@@ -16,8 +19,103 @@ $theme: mat.define-light-theme(
   )
 );
 
+section {
+  margin: 1.25rem 0;
+}
+
+.container {
+  margin: 0 12.5px;
+  height: calc(100% - 10px);
+}
+
+.hStyle {
+  width: min-content;
+  border-style: none none double none;
+  transition: all 0.1s;
+}
+
+.navbar {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1),
+    -10px -10px 10px rgba(255, 255, 255, 0.1);
+  margin: 0 2rem;
+
+  & > button {
+    margin: 0 0.5rem;
+  }
+
+  &-item {
+    margin: 0 0.5rem;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    border-radius: 0.25rem;
+    padding: 0.3125rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.1s;
+
+    &:hover {
+      background-color: thistle;
+      box-shadow: 30px 30px 80px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+.active {
+  color: #000 !important;
+  background: thistle;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.sidenav {
+  width: 200px;
+
+  &-container {
+    height: auto;
+    width: 100%;
+  }
+
+  & .mat-toolbar {
+    background: inherit;
+  }
+}
+
 .accent {
   background: mat.get-color-from-palette($accent) !important;
+}
+
+.success {
+  color: mat.get-color-from-palette($success) !important;
+}
+
+.danger {
+  color: mat.get-color-from-palette($danger) !important;
+}
+
+.bg-success {
+  background-color: mat.get-color-from-palette($success) !important;
+}
+
+.bg-danger {
+  background-color: mat.get-color-from-palette($danger) !important;
+}
+
+.mat-focused .mat-form-field-label {
+  color: mat.get-color-from-palette($success) !important;
+}
+
+.mat-form-field-underline .mat-form-field-ripple {
+  /*change color of underline*/
+  background-color: mat.get-color-from-palette($success) !important;
 }
 
 // @include mat.all-component-themes($theme);
@@ -32,11 +130,11 @@ body {
 }
 
 .mat-card {
-  background: mat.get-color-from-palette($accent)!important;
-  color: mat.get-color-from-palette($text)!important;
+  background: mat.get-color-from-palette($accent) !important;
+  color: mat.get-color-from-palette($text) !important;
   border-radius: 0.25rem !important;
-  overflow-y: auto;
-  max-height: -webkit-fill-available;
+  // overflow-y: auto;
+  // max-height: -webkit-fill-available;
 }
 
 .login-wrapper {
@@ -119,5 +217,3 @@ body {
 .login-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
   padding: 0.8375em 0;
 }
-
-@import "./assets/sass/_index";

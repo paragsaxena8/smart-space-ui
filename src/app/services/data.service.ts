@@ -6,7 +6,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class DataService {
-  url = environment.api;
+  host = environment.host;
+  url = `${environment.host}/api/v1`;
   constructor(private http: HttpClient) {}
 
   getData(path: string) {

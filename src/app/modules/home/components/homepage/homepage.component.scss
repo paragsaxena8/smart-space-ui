@@ -1,0 +1,34 @@
+.profile-pic {
+  box-shadow: 11px 13px 44px 7px rgba(0, 0, 0, 0.51) !important;
+  border-radius: 25% 75% 22% 78% / 57% 41% 59% 43% !important;
+}
+
+.bio {
+  text-align: center;
+
+  &-header {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fff;
+    margin: 0.5rem 0;
+  }
+
+  &-content {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: #fff;
+    margin: 0.5rem 0;
+  }
+}
+
+.ofc{
+  object-fit: cover;
+  margin-bottom: 0;
+}
+
+.card-img{
+  display: flex;
+  justify-content: center;
+  height: 11em;
+  padding: 1rem 0;
+}

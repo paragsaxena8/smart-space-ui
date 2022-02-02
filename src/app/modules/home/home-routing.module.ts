@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
+import { HomeComponent } from './home.component';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: NavigationComponent,
+    path: '',
+    component: HomeComponent,
     children: [
       {
         path: '',
@@ -16,30 +16,7 @@ const routes: Routes = [
         outlet: 'homeApp',
       },
     ],
-  },
-  {
-    path: 'about',
-    component: NavigationComponent,
-    children: [
-      {
-        path: '',
-        component: AboutComponent,
-        outlet: 'homeApp',
-      },
-    ],
-  },
-  {
-    path: 'contact',
-    component: NavigationComponent,
-    children: [
-      {
-        path: '',
-        component: ContactComponent,
-        outlet: 'homeApp',
-      },
-    ],
-  },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  }
 ];
 
 @NgModule({
