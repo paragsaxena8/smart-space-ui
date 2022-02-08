@@ -1,1 +1,17 @@
-<app-navigation></app-navigation>
+<header class="header-bg bg-success">
+    <div class="container">
+        <div class="header-content">
+            <h1>Smart Space</h1>
+            <p>
+                Smart Space is a web application that allows users to create and manage their own
+                blogs.
+            </p>
+            <div class="d-flex jcc">
+                <a href="/login" mat-raised-button color="primary" class="mr-1" *ngIf="!currentUser">Login</a>
+                <a href="/signup" mat-raised-button color="accent" *ngIf="!currentUser">Signup</a>
+                <a href="/blog" mat-raised-button color="accent" *ngIf="currentUser">Get Started</a>
+            </div>
+        </div>
+    </div>
+</header>
+

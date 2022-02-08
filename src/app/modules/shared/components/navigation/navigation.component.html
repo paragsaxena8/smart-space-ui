@@ -1,20 +1,33 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="mat-elevation-z8 ">
+  <ng-container *ngIf="sidenav">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">
+        menu
+      </mat-icon>
+      <mat-icon *ngIf="sidenav.opened">
+        close
+      </mat-icon>
+    </button>
+  </ng-container>
+
   <button mat-icon-button>
     <mat-icon>speaker_notes</mat-icon>
   </button>
-  <span>Smart Space</span>
+  <span routerLink="/home" class="cp">Smart Space</span>
   <span class="menu-spacer"></span>
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="user profile with menu">
-    <img src="https://www.robohash.org/{{currentUser.name}}?set=set3&size=24x24" class="header-min-logo" alt="">
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>account_circle</mat-icon>
-      <span routerLink="/dashboard">Dashboard</span>
+  <ng-container *ngIf="currentUser">
+    <button routerLink="/dashboard" mat-icon-button aria-label="user profile with menu" class="mx-2">
+      <mat-icon class="pr-5px" >account_circle</mat-icon>
+      <span>{{currentUser.data.user.username}}</span>
     </button>
-    <button mat-menu-item (click)="logout()">
-      <mat-icon>power_settings_new</mat-icon>
-      <span>Logout</span>
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
     </button>
-  </mat-menu>
+  </ng-container>
+  <ng-container *ngIf="!currentUser">
+    <div fxShow fxHide.lt-md class="navbar">
+      <button mat-raised-button color="primary" routerLink="/login" routerLinkActive="active">Login</button>
+      <button mat-raised-button color="primary" routerLink="/signup" routerLinkActive="active">Signup</button>
+    </div>
+  </ng-container>
 </mat-toolbar>

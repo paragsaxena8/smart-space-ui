@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { LoginComponent } from './common/login/login.component';
 import { SignupComponent } from './common/signup/signup.component';
 import { StartupComponent } from './common/startup/startup.component';
+import { AboutComponent } from './modules/home/components/about/about.component';
 import { AuthGuard } from './services/_helpers/auth.guard';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: 'dashboard',
     canActivate: [AuthGuard],
@@ -19,6 +19,10 @@ const routes: Routes = [
       import('./modules/home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'post/:slug',
+    component: AboutComponent,
+  },
+  {
     path: 'login',
     component: LoginComponent,
   },
@@ -28,14 +32,10 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: StartupComponent
+    component: StartupComponent,
   },
   { path: '', redirectTo: '/blog', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' },
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
 export class AppRoutingModule {}

@@ -38,16 +38,12 @@ export class LoginComponent implements OnInit {
       this._authService.login(d.value).subscribe({
         next: (res: any) => {
           if (res.status === 'success') {
-            console.log('login success');
-
             this._snackBar.open('Logged In successfully', 'X');
             this.router.navigate(['/']);
           }
         },
         error: (err) => {
-          console.log(err);
-
-          this._snackBar.open(err, 'X');
+          this._snackBar.open(err.error.message, 'X');
         },
       });
     }

@@ -5,11 +5,9 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { SharedModule } from '../shared/shared.module';
-import { HomeComponent } from './home.component';
 
 @NgModule({
   declarations: [
-    HomeComponent,
     HomepageComponent,
     AboutComponent,
     ContactComponent,

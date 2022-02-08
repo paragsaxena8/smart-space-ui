@@ -1,13 +1,13 @@
-<div class="login-wrapper bg-success" fxLayout="row" fxLayoutAlign="center center">
+<div class="wrapper bg-success" fxLayout="row" fxLayoutAlign="center center">
 
     <mat-card class="box">
         <mat-card-header>
             <mat-card-title>Log in</mat-card-title>
         </mat-card-header>
 
-        <form class="login-form" [formGroup]="form" (ngSubmit)="submit(form)">
+        <form class="form" [formGroup]="form" (ngSubmit)="submit(form)">
             <mat-card-content>
-                <mat-form-field class="login-full-width">
+                <mat-form-field class="full-width">
                     <input matInput type="text" name="username" formControlName="username" placeholder="Username"
                         required="true">
                     <mat-error *ngIf="username.hasError('required')">
@@ -16,15 +16,17 @@
 
                 </mat-form-field>
 
-                <mat-form-field class="login-full-width">
+                <mat-form-field class="full-width">
                     <input matInput type="password" name="password" formControlName="password" placeholder="Password"
                         required="true">
                     <mat-error *ngIf="password.hasError('required')">
                         Password is required
                     </mat-error>
                 </mat-form-field>
+                <code class="d-flex jce"><a class="text-link" routerLink="/login">Forgot Password</a></code>
             </mat-card-content>
-            <button mat-raised-button [disabled]="form.invalid" color="primary" class="btn-block btn-sm">Log in</button>
+            <button mat-raised-button [disabled]="form.invalid" color="primary" class="btn-block btn-sm mb-1">Log in</button>
+            <code>Don't have an account? <a class="text-link" routerLink="/login">Signup</a></code>
         </form>
     </mat-card>
 

@@ -1,15 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Blog, blogData } from 'src/app/interfaces/blog.interface';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+  styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit {
-
-  constructor() { }
+  slug: any;
+  blogData: any;
+  constructor(private route: ActivatedRoute, private ds: DataService) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.slug = params['slug'];
+    });
+    this.getBlogData();
   }
 
+  getBlogData() {
+    this.ds.getData(`blogs/${this.slug}`).subscribe((res: any) => {
+      this.blogData = res.data;
+      console.log(this.blogData);
+
+    });
+  }
 }

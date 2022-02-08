@@ -19,7 +19,10 @@ export interface blogData {
   createdAt: Date;
   updatedAt: Date;
   slug: string;
-  __v: number;
+  summary: string;
+  readingTime: number;
+  likes: number;
+  dislikes: number;
 }
 
 export interface Blog {

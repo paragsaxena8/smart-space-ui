@@ -4,7 +4,8 @@ import { map, Observable, shareReplay } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserData } from 'src/app/interfaces/user.interface';
 import { DataService } from 'src/app/services/data.service';
-import { Blog, blogData } from 'src/app/interfaces/blog.interface';
+import { blogData } from 'src/app/interfaces/blog.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -27,7 +28,8 @@ export class HomepageComponent implements OnInit {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private _auth: AuthService,
-    private ds: DataService
+    private ds: DataService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +37,12 @@ export class HomepageComponent implements OnInit {
       this.mybreakpoint = isHandset ? 1 : 3;
     });
     this.getAllBlogs();
+  }
+
+  openPost(blog: blogData) {
+    const slug = blog.slug;
+    this.router.navigate(['/post', slug]);
+    console.log('/post', slug);
   }
 
   getAllBlogs() {

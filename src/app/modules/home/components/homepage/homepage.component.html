@@ -4,9 +4,9 @@
             <mat-grid-list [cols]="3" rowHeight="2:1">
                 <div fxFlex="25%" fxFlex.sm="100%">
                     <mat-grid-tile colspan="1">
-                        <mat-card class="profile-pic">
+                        <mat-card class="mat-elevation-z21">
                             <mat-card-content>
-                                <img mat-card-image src="https://www.robohash.org/{{currentUser.name}}?set=set3&size=200x200" alt="pp">
+                                <img mat-card-image src="https://avatars.dicebear.com/api/micah/{{currentUser.name}}.svg" alt="pp">
                             </mat-card-content>
                         </mat-card>
                     </mat-grid-tile>
@@ -31,18 +31,19 @@
 
     <mat-grid-list [cols]="mybreakpoint" rowHeight="350px" gutterSize="10px">
         <mat-grid-tile *ngFor="let blog of (allBlogs$| async)">
-            <mat-card class="example-card">
+            <mat-card class="blog-card">
                 <mat-card-header>
-                    <!-- <div mat-card-avatar class="example-header-image"></div> -->
                     <img mat-card-avatar src="https://www.robohash.org/{{currentUser.name}}?set=set3&size=100x100" class="header-min-logo" alt="">
-                    <mat-card-title>{{blog.title}}</mat-card-title>
-                    <mat-card-subtitle>Created At {{blog.createdAt | date}} | By {{blog.author.name}}</mat-card-subtitle>
+                    <mat-card-title class="cp" (click)="openPost(blog)">{{blog.title}} </mat-card-title>
+                    <mat-card-subtitle>By {{blog.author.name}}</mat-card-subtitle>
                 </mat-card-header>
                 <div class="card-img">
-                    <img class="ofc"  mat-card-image src="https://source.unsplash.com/random/300x300" alt="{{blog.title}}">
+                    <img class="ofc"  mat-card-image src="{{blog.featuredImage}}" alt="{{blog.title}}">
                 </div>
                 <mat-card-content>
-                    <p>{{blog.body.slice(0,500)}}</p>
+                    <p class="blog-summary">{{blog.summary}}</p>
+
+                    <p class="readTime"> {{blog.createdAt | date}} |  {{blog.readingTime}} min Read</p>
                 </mat-card-content>
             </mat-card>
         </mat-grid-tile>

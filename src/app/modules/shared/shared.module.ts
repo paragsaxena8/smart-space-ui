@@ -35,10 +35,12 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { NavigationComponent } from './components/navigation/navigation.component';
+import { RouterModule } from '@angular/router';
 
 const materialModules = [
   HttpClientModule,
@@ -65,6 +67,7 @@ const materialModules = [
   MatTabsModule,
   MatToolbarModule,
   MatFormFieldModule,
+  MatDialogModule,
   MatButtonToggleModule,
   MatTreeModule,
   OverlayModule,
@@ -81,7 +84,7 @@ const materialModules = [
 
 @NgModule({
   declarations: [NavigationComponent],
-  imports: [CommonModule, ...materialModules],
+  imports: [CommonModule, ...materialModules, RouterModule],
   exports: [...materialModules, NavigationComponent],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },

@@ -1,1 +1,11 @@
-<p>about works!</p>
+<mat-card color="accent" *ngIf="blogData">
+    <mat-card-header>
+        <mat-card-title>
+            <h1>{{blogData.title}}</h1>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <p class="mt-1">{{blogData.body}}</p>
+    </mat-card-content>
+</mat-card>

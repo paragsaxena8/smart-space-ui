@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,9 +9,12 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavigationComponent implements OnInit {
   currentUser: any;
+  @Input() sidenav:any;
   constructor(private _auth: AuthService) {}
   ngOnInit(): void {
-    this.currentUser = this._auth.currentUserValue.data.user;
+    this._auth.currentUser.subscribe((x) => {
+      if (Object.keys(x).length !== 0) this.currentUser = x;
+    });
   }
 
   logout() {

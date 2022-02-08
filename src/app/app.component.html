@@ -1,1 +1,41 @@
-<router-outlet></router-outlet>
+<app-navigation [sidenav]="sidenav"></app-navigation>
+
+<mat-sidenav-container *ngIf="showSidebar && currentUser">
+    <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+       <img class="avatar mat-elevation-z8" src="https://avatars.dicebear.com/api/micah/{{currentUser.name}}.svg" />
+        <h4 class="name">{{currentUser.name}}</h4>
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button" routerLink="/blog">
+            <mat-icon>home</mat-icon>
+            <span>Back to Home</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>person</mat-icon>
+            <span>Blogs</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>info</mat-icon>
+            <span>Category</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>help</mat-icon>
+            <span>Tags</span>
+        </button>
+        <mat-divider></mat-divider>
+        <button mat-button class="menu-button">
+            <mat-icon>help</mat-icon>
+            <span>Tags</span>
+        </button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+<div class="content mat-elevation-z8" *ngIf="!showSidebar">
+    <router-outlet></router-outlet>
+</div>
