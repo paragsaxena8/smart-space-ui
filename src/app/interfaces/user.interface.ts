@@ -4,11 +4,11 @@ export interface UserData {
   name: string;
   email: string;
   role: string;
+  photo: string;
   createdAt: Date;
-  passwordResetExpires: Date;
-  passwordResetToken: string;
   bio: string;
 }
+
 
 export interface Data {
   user: UserData;

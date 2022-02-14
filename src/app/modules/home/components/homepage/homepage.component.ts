@@ -36,7 +36,7 @@ export class HomepageComponent implements OnInit {
     this.isHandset$.subscribe((isHandset) => {
       this.mybreakpoint = isHandset ? 1 : 3;
     });
-    this.getAllBlogs();
+
   }
 
   openPost(blog: blogData) {
@@ -45,14 +45,4 @@ export class HomepageComponent implements OnInit {
     console.log('/post', slug);
   }
 
-  getAllBlogs() {
-    this.allBlogs$.subscribe({
-      next: (blogs) => {
-        console.log(blogs);
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
-  }
 }

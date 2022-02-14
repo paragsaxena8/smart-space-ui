@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -10,8 +10,18 @@ export class DataService {
   url = `${environment.host}/api/v1`;
   constructor(private http: HttpClient) {}
 
+  get() {
+    return this.http.get(`${this.host}`);
+  }
+
   getData(path: string) {
     return this.http.get(`${this.url}/${path}`);
+  }
+
+  getDataWithParams(path: string, params: { name: string; value: string }) {
+    return this.http.get(`${this.url}/${path}`, {
+      params: new HttpParams().set(params.name, params.value),
+    });
   }
 
   postData(path: string, data: any) {

@@ -22,6 +22,11 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+  isSignedIn(){
+    if(this.currentUserSubject.value) return true;
+    return false;
+  }
+
   login(details: [string, string]) {
     return this.http
       .post<any>(`${environment.host}/api/v1/users/login`, details )

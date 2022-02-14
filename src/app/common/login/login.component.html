@@ -1,4 +1,4 @@
-<div class="wrapper bg-success" fxLayout="row" fxLayoutAlign="center center">
+<div class="wrapper" fxLayout="row" fxLayoutAlign="center center">
 
     <mat-card class="box">
         <mat-card-header>
@@ -23,10 +23,10 @@
                         Password is required
                     </mat-error>
                 </mat-form-field>
-                <code class="d-flex jce"><a class="text-link" routerLink="/login">Forgot Password</a></code>
+                <code class="d-flex jce"><a class="text-link" routerLink="/forgotPassword">Forgot Password</a></code>
             </mat-card-content>
             <button mat-raised-button [disabled]="form.invalid" color="primary" class="btn-block btn-sm mb-1">Log in</button>
-            <code>Don't have an account? <a class="text-link" routerLink="/login">Signup</a></code>
+            <code>Don't have an account? <a class="text-link" routerLink="/signup">Signup</a></code>
         </form>
     </mat-card>
 

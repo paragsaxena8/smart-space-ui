@@ -1,11 +1,30 @@
-<header class="header-bg bg-success">
-    <div class="container">
-        <div class="header-content">
-            <h1>Smart Space Dashboard</h1>
-            <p>
-                Smart Space is a web application that allows users to create and manage their own
-                blogs.
-            </p>
+<section id="blogs">
+    <div class="box bg-accent full-box">
+        <div class="d-flex jcb">
+            <h2 class="accent">My Blogs</h2>
+        </div>
+
+        <div class="content">
+            <mat-grid-list [cols]="3" rowHeight="1:1" gutterSize="10px" *ngIf="(allMyBlogs$| async) as blogs">
+                <mat-grid-tile *ngFor="let blog of blogs">
+                    <mat-card class="blog-card">
+                        <mat-card-header>
+                            <img mat-card-avatar [src]="blog.author.photo" class="header-min-logo" alt="">
+                            <mat-card-title class="cp">{{blog.title}} </mat-card-title>
+                            <mat-card-subtitle>By {{blog.author.username}} | {{blog.readingTime}} min Read
+                            </mat-card-subtitle>
+                        </mat-card-header>
+                        <div class="card-img">
+                            <img class="ofc" mat-card-image src="{{blog.featuredImage}}" alt="{{blog.title}}">
+                        </div>
+                        <mat-card-content>
+                            <p class="blog-summary">{{blog.summary}}</p>
+
+                            <p> {{blog.createdAt | date}} </p>
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+            </mat-grid-list>
         </div>
     </div>
-</header>
+</section>

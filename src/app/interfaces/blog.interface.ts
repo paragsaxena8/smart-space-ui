@@ -6,6 +6,8 @@ export interface Category {
 export interface Author {
   _id: string;
   name: string;
+  photo: string;
+  username: string;
 }
 
 export interface blogData {

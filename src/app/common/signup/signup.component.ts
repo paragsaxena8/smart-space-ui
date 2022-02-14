@@ -11,6 +11,7 @@ import { Error } from 'src/app/interfaces/user.interface';
 })
 export class SignupComponent implements OnInit {
   form: any;
+  showLoad = false;
   constructor(
     private ds: DataService,
     private fb: FormBuilder,
@@ -23,8 +24,8 @@ export class SignupComponent implements OnInit {
       name: ['', Validators.required],
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      passwordConfirm: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      passwordConfirm: ['', Validators.required, Validators.minLength(6)],
       bio: [''],
     });
   }
@@ -49,10 +50,10 @@ export class SignupComponent implements OnInit {
   }
 
   checkUserName(): any {
-    const username = this.form.get('username')?.value;
+    const username = this.form.get('username').value;
 
     if (username === 'admin') {
-      this.form.get('username')?.setErrors({
+      this.form.get('username').setErrors({
         username: 'username is not allowed',
       });
     } else {
@@ -75,25 +76,28 @@ export class SignupComponent implements OnInit {
   }
 
   submit(d: FormGroup) {
+    this.showLoad = true;
     if (d.valid) {
       console.log(d.value);
-
-      this.ds.postData('users/signup', d.value).subscribe({
-        next: (res: any) => {
-          console.log(res);
-          this._snackBar.open('User created successfully', '', {
-            duration: 3000,
-          });
-          // this.router.navigate(['/']);
-        },
-        error: (err) => {
-          console.log(err);
-          this._snackBar.open(err, 'X', {
-            duration: 3000,
-            panelClass: 'bg-danger',
-          });
-        },
-      });
     }
+
+    this.ds.postData('users/signup', d.value).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        this._snackBar.open('User created successfully, Please Check your email', '', {
+          duration: 5000,
+          verticalPosition: 'top',
+        });
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.log(err);
+        this._snackBar.open(err, 'X', {
+          duration: 3000,
+          panelClass: 'bg-danger',
+        });
+      },
+    });
+
   }
 }

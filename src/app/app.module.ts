@@ -13,6 +13,8 @@ import { GlobalErrorHandler } from './services/_helpers/error.handler';
 import { StartupComponent } from './common/startup/startup.component';
 import { environment } from 'src/environments/environment';
 import { RouterModule } from '@angular/router';
+import { ForgotPasswordComponent } from './common/forgot-password/forgot-password.component';
+import { IsSignedInGuard } from './services/_helpers/islogged.guard';
 
 let localProviders = [
   {
@@ -28,6 +30,7 @@ environment.production ? (localProviders = []) : localProviders;
     SignupComponent,
     LoginComponent,
     StartupComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +44,7 @@ environment.production ? (localProviders = []) : localProviders;
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     ...localProviders,
+    IsSignedInGuard,
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -1,5 +1,5 @@
-<header class="header-bg bg-success">
-    <div class="container">
+<header class="header-bg">
+    <div class="content">
         <div class="header-content">
             <h1>Smart Space</h1>
             <p>
@@ -7,11 +7,10 @@
                 blogs.
             </p>
             <div class="d-flex jcc">
-                <a href="/login" mat-raised-button color="primary" class="mr-1" *ngIf="!currentUser">Login</a>
-                <a href="/signup" mat-raised-button color="accent" *ngIf="!currentUser">Signup</a>
-                <a href="/blog" mat-raised-button color="accent" *ngIf="currentUser">Get Started</a>
+                <a routerLink="/login" mat-raised-button color="primary" class="mr-1" *ngIf="!currentUser">Login</a>
+                <a routerLink="/signup" mat-raised-button color="accent" *ngIf="!currentUser">Signup</a>
+                <a routerLink="/blog" mat-raised-button color="accent" *ngIf="currentUser">Get Started</a>
             </div>
         </div>
     </div>
 </header>
-
