@@ -8,18 +8,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}').data
-    .user;
-  allMyBlogs$: Observable<blogData[]> = this.ds
-    .getDataWithParams('blogs', {
-      name: 'user',
-      value: this.currentUser._id,
-    })
-    .pipe(
-      map((rsp: any) => rsp.data),
-      shareReplay()
-    );
-  constructor(private ds: DataService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 }

@@ -4,18 +4,25 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
+  HttpResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { SpinnerService } from './spinner.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private authenticationService: AuthService) {}
+  constructor(
+    private authenticationService: AuthService,
+    private spinnerService: SpinnerService
+  ) {}
 
   intercept(
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    this.spinnerService.show();
+
     // add authorization header with jwt token if available
     let currentUser = this.authenticationService.currentUserValue;
     if (currentUser && currentUser.token) {
@@ -26,6 +33,17 @@ export class JwtInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      tap({
+        next: (event: HttpEvent<any>) => {
+          if (event instanceof HttpResponse) {
+            this.spinnerService.hide();
+          }
+        },
+        error: (error) => {
+          this.spinnerService.hide();
+        },
+      })
+    );
   }
 }

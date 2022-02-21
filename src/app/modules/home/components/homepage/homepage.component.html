@@ -18,24 +18,5 @@
     </mat-grid-list>
 </section>
 <section id="blogs">
-    <mat-grid-list [cols]="mybreakpoint" rowHeight="350px" gutterSize="10px" *ngIf="(allBlogs$| async) as blogs">
-        <mat-grid-tile *ngFor="let blog of blogs">
-            <mat-card class="blog-card">
-                <mat-card-header>
-                    <img mat-card-avatar [src]="blog.author.photo"
-                        class="header-min-logo" alt="">
-                    <mat-card-title class="cp" (click)="openPost(blog)">{{blog.title}} </mat-card-title>
-                    <mat-card-subtitle>By {{blog.author.username}} | {{blog.readingTime}} min Read</mat-card-subtitle>
-                </mat-card-header>
-                <div class="card-img">
-                    <img class="ofc" mat-card-image src="{{blog.featuredImage}}" alt="{{blog.title}}">
-                </div>
-                <mat-card-content>
-                    <p class="blog-summary">{{blog.summary}}</p>
-
-                    <p> {{blog.createdAt | date}} </p>
-                </mat-card-content>
-            </mat-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+    <app-blog [location]="'home'"></app-blog>
 </section>

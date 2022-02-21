@@ -62,3 +62,18 @@ mat-divider {
   margin-bottom: 16px;
   background-color: rgba(255, 255, 255, 0.5);
 }
+
+.loadingSpinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding:2rem 0rem;
+  &::after{
+    content: 'Loading...';
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: block;
+    margin-top: 1.5rem;
+  }
+}

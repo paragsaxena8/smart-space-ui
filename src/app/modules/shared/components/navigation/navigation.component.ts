@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavigationComponent implements OnInit {
   currentUser: any;
-  @Input() sidenav:any;
+  @Input('sidenav') sidenav: any;
   constructor(private _auth: AuthService) {}
   ngOnInit(): void {
     this._auth.currentUser.subscribe((x) => {

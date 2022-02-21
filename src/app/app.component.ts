@@ -6,15 +6,18 @@ import { catchError, delay, Observable, tap, throwError } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from './services/auth.service';
 import { DataService } from './services/data.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SpinnerService } from './services/_helpers/spinner.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  @ViewChild(MatSidenav) sidenav!: MatSidenav;
+  @ViewChild(MatSidenav) sidenav: any;
+  @ViewChild('notFound') notFound: any;
   isActive: any;
-  currentUser:any;
+  currentUser: any;
   title = 'smart-space-ui';
   showSidebar = false;
   constructor(
@@ -22,12 +25,13 @@ export class AppComponent implements OnInit {
     private location: Location,
     private observer: BreakpointObserver,
     private cdr: ChangeDetectorRef,
-    private ds: DataService
+    private ds: DataService,
+    private dialog: MatDialog,
+    public spinnerService: SpinnerService,
+    private _auth: AuthService
   ) {}
   ngOnInit(): void {
-    this.currentUser = JSON.parse(
-      localStorage.getItem('currentUser') || '{}'
-    ).data.user;
+    this.currentUser = this._auth.currentUserValue;
     this.ds.get().subscribe({
       next: (res: any) => {
         console.log(res);
@@ -35,14 +39,19 @@ export class AppComponent implements OnInit {
       },
       error: (err: any) => {
         console.log(err);
+        this.dialog.open(this.notFound, {
+          hasBackdrop: true,
+          disableClose: true,
+        });
         this.isActive = false;
       },
     });
-    let currentPath;
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        currentPath = this.location.path();
-        this.showSidebar = currentPath === '/dashboard' ? true : false;
+        const currentPath = this.location.path();
+        currentPath === '/dashboard'
+          ? (this.showSidebar = true)
+          : (this.showSidebar = false);
         if (this.showSidebar) {
           this.observer
             .observe(['(max-width: 800px)'])
@@ -58,7 +67,6 @@ export class AppComponent implements OnInit {
                   this.sidenav.mode = 'side';
                   this.sidenav.open();
                 }
-                this.cdr.detectChanges();
               }
             });
         }

@@ -41,6 +41,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { RouterModule } from '@angular/router';
+import { BlogComponent } from './components/blog/blog.component';
+import { SpinnerService } from 'src/app/services/_helpers/spinner.service';
 
 const materialModules = [
   HttpClientModule,
@@ -83,11 +85,12 @@ const materialModules = [
 ];
 
 @NgModule({
-  declarations: [NavigationComponent],
+  declarations: [NavigationComponent, BlogComponent],
   imports: [CommonModule, ...materialModules, RouterModule],
-  exports: [...materialModules, NavigationComponent],
+  exports: [...materialModules, NavigationComponent, BlogComponent],
   providers: [
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
+    SpinnerService
   ],
 })
 export class SharedModule {}

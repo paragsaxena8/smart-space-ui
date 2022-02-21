@@ -7,6 +7,31 @@
                 src="https://avatars.dicebear.com/api/micah/{{currentUser?.name}}.svg" />
             <h4 class="name">{{currentUser?.name}}</h4>
             <mat-divider></mat-divider>
+            <mat-nav-list>
+                <a mat-list-item routerLink="/dashboard" class="text-light" routerLinkActive="active">
+                    <mat-icon>dashboard</mat-icon>&nbsp;
+                    <span>Dashboard</span>
+                </a>
+                <a mat-list-item routerLink="/dashboard" class="text-light" routerLinkActive="active">
+                    <mat-icon>message</mat-icon>&nbsp;
+                    <span>Blog</span>
+                </a>
+                <a mat-list-item routerLink="/profile" class="text-light" routerLinkActive="active">
+                    <mat-icon>person</mat-icon>&nbsp;
+                    <span>Profile</span>
+                </a>
+                <a mat-list-item routerLink="/settings" class="text-light" routerLinkActive="active">
+                    <mat-icon>settings</mat-icon>&nbsp;
+                    <span>Settings</span>
+                </a>
+                <a mat-list-item routerLink="/logout" class="text-light" routerLinkActive="active">
+                    <mat-icon>exit_to_app</mat-icon>&nbsp;
+                    <span>Logout</span>
+                </a>
+            </mat-nav-list>
+
+            <mat-divider></mat-divider>
+
             <button mat-button class="menu-button" routerLink="/blog">
                 <mat-icon>home</mat-icon>
                 <span>Back to Home</span>
@@ -23,7 +48,6 @@
                 <mat-icon>help</mat-icon>
                 <span>Tags</span>
             </button>
-            <mat-divider></mat-divider>
             <button mat-button class="menu-button">
                 <mat-icon>help</mat-icon>
                 <span>Tags</span>
@@ -42,10 +66,13 @@
 
 </ng-container>
 
-<ng-container *ngIf="!isActive">
-    <div class="service-down">
+<ng-template #notFound>
+    <div class="service-down" *ngIf="!!currentUser">
         <h1>503</h1>
         <h2>Service Unavailable</h2>
         <p>The service is currently unavailable. Please try again later.</p>
     </div>
-</ng-container>
+</ng-template>
+
+<mat-spinner class="loadingSpinner" [diameter]="50" *ngIf="spinnerService.visibility | async">
+</mat-spinner>
