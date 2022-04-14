@@ -1,0 +1,29 @@
+.blog {
+  background-color: #fff!important;
+  color: #000!important;
+  &__content {
+    letter-spacing: -0.003em;
+    line-height: 32px;
+    font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 20px;
+  }
+
+  &__title {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 52px;
+    line-height: 62px;
+    font-weight: 400;
+    text-decoration: overline;
+    text-transform: uppercase;
+  }
+
+  &__feature__image {
+  padding: 250px 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+  width: 100%;
+}
+}
+

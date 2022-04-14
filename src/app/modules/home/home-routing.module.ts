@@ -10,6 +10,10 @@ const routes: Routes = [
       {
         path: '',
         component: HomepageComponent,
+      },
+      {
+        path:'post/:slug',
+        component: AboutComponent
       }
     ],
   },

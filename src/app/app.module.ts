@@ -4,17 +4,20 @@ import { CommonModule } from '@angular/common';
 import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SignupComponent } from './common/signup/signup.component';
-import { LoginComponent } from './common/login/login.component';
-import { SharedModule } from './modules/shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtInterceptor } from './services/_helpers/jwt.interceptor';
-import { GlobalErrorHandler } from './services/_helpers/error.handler';
-import { StartupComponent } from './common/startup/startup.component';
+import { StartupComponent } from './core/startup/startup.component';
 import { environment } from 'src/environments/environment';
-import { RouterModule } from '@angular/router';
-import { ForgotPasswordComponent } from './common/forgot-password/forgot-password.component';
-import { IsSignedInGuard } from './services/_helpers/islogged.guard';
+import { ExtraOptions, PreloadAllModules, RouterModule } from '@angular/router';
+import { GlobalErrorHandler } from './core/services/_helpers/error.handler';
+import { IsSignedInGuard } from './core/services/_helpers/islogged.guard';
+import { JwtInterceptor } from './core/services/_helpers/jwt.interceptor';
+import { ForgotPasswordComponent } from './modules/auth/forgot-password/forgot-password.component';
+import { LoginComponent } from './modules/auth/login/login.component';
+import { SignupComponent } from './modules/auth/signup/signup.component';
+import { LayoutModule } from './core/layout/layout.module';
+import { ResetPasswordComponent } from './modules/auth/reset-password/reset-password.component';
+import { VerifyAccountComponent } from './modules/auth/verify-account/verify-account.component';
 
 let localProviders = [
   {
@@ -24,6 +27,7 @@ let localProviders = [
 ];
 environment.production ? (localProviders = []) : localProviders;
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,14 +35,17 @@ environment.production ? (localProviders = []) : localProviders;
     LoginComponent,
     StartupComponent,
     ForgotPasswordComponent,
+    ResetPasswordComponent,
+    VerifyAccountComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
     RouterModule.forRoot(routes, {
-      onSameUrlNavigation: 'reload',
+      useHash: false
     }),
     BrowserAnimationsModule,
+    LayoutModule,
     SharedModule,
   ],
   providers: [

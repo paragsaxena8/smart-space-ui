@@ -1,0 +1,13 @@
+<div class="box" *ngIf="isVerfied">
+    <h2>Your Account is verified Now</h2>
+    <p>Please Login In Your Account Now</p>
+    <button mat-raised-button color="primary" routerLink="/login">
+    Login &rarr;
+    </button>
+</div>
+
+<div class="w-100 box" *ngIf="!isVerfied">
+    <h2>Invaild Token. </h2>
+    <h3>{{errorMessage}}</h3>
+</div>
+

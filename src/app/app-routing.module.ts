@@ -1,51 +1,65 @@
 import { Routes } from '@angular/router';
-import { ForgotPasswordComponent } from './common/forgot-password/forgot-password.component';
-import { LoginComponent } from './common/login/login.component';
-import { SignupComponent } from './common/signup/signup.component';
-import { StartupComponent } from './common/startup/startup.component';
-import { AboutComponent } from './modules/home/components/about/about.component';
-import { AuthGuard } from './services/_helpers/auth.guard';
-import { IsSignedInGuard } from './services/_helpers/islogged.guard';
+import { LayoutComponent } from './core/layout/layout.component';
+import { AuthGuard } from './core/services/_helpers/auth.guard';
+import { IsSignedInGuard } from './core/services/_helpers/islogged.guard';
+import { ForgotPasswordComponent } from './modules/auth/forgot-password/forgot-password.component';
+import { LoginComponent } from './modules/auth/login/login.component';
+import { ResetPasswordComponent } from './modules/auth/reset-password/reset-password.component';
+import { SignupComponent } from './modules/auth/signup/signup.component';
+import { VerifyAccountComponent } from './modules/auth/verify-account/verify-account.component';
 
 export const routes: Routes = [
-  {
-    path: 'dashboard',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./modules/admin/admin.module').then((m) => m.AdminModule),
-  },
-  {
-    path: 'blog',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./modules/home/home.module').then((m) => m.HomeModule),
-  },
-  {
-    path: 'post/:slug',
-    component: AboutComponent,
-    canActivate: [IsSignedInGuard],
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-    canActivate: [IsSignedInGuard],
-  },
-  {
-    path: 'signup',
-    component: SignupComponent,
-    canActivate: [IsSignedInGuard],
-  },
-  {
-    path: 'forgotPassword',
-    component: ForgotPasswordComponent,
-    canActivate: [IsSignedInGuard],
-  },
-  {
-    path: 'home',
-    component: StartupComponent,
-  },
   { path: '', redirectTo: '/blog', pathMatch: 'full' },
-  { path: '**', redirectTo: '/home' },
+  {
+    path: '',
+    component: LayoutComponent,
+    data: {
+      layout: 'default',
+    },
+    children: [
+      {
+        path: 'blog',
+        loadChildren: () =>
+          import('./modules/home/home.module').then((m) => m.HomeModule),
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'signup',
+        component: SignupComponent,
+      },
+      {
+        path: 'forgotPassword',
+        component: ForgotPasswordComponent,
+      },
+      {
+        path: 'resetPassword',
+        component: ResetPasswordComponent,
+      },
+      {
+        path: 'verify/:token',
+        component: VerifyAccountComponent
+      }
+    ],
+  },
+  {
+    path: '',
+    component: LayoutComponent,
+    canActivate: [AuthGuard],
+    data: {
+      layout: 'admin',
+    },
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./modules/admin/admin.module').then((m) => m.AdminModule),
+      },
+    ],
+  },
+  { path: '**', redirectTo: '/blog' },
 ];
 
 export class AppRoutingModule {}

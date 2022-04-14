@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SharedModule } from '../shared/shared.module';
+import { BlogActionComponent } from './components/blog-action/blog-action.component';
+
+import { NgxEditorModule } from 'ngx-editor';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [DashboardComponent],
-  imports: [CommonModule, AdminRoutingModule, SharedModule],
+  declarations: [DashboardComponent, BlogActionComponent],
+  imports: [CommonModule, AdminRoutingModule, SharedModule, NgxEditorModule],
 })
 export class AdminModule {}

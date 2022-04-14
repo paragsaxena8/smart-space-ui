@@ -1,0 +1,74 @@
+::ng-deep .NgxEditor__MenuBar {
+  flex-wrap: wrap;
+}
+
+::ng-deep .NgxEditor {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: none;
+  height: 400px !important;
+  overflow-y: auto;
+}
+
+.mat-toolbar-single-row {
+  height: auto !important;
+  background: transparent;
+  button {
+    width: 30%;
+  }
+}
+
+#fileUpload {
+  position: absolute;
+  z-index: 9;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  cursor: pointer;
+}
+
+.showImage {
+  text-decoration: none;
+  position: relative;
+
+  & div.tooltip {
+    display: none;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    color: black;
+    background: white;
+  }
+
+  & div.tooltip img {
+    float: left;
+    margin: 0px 8px 8px 0;
+  }
+
+  &:hover .tooltip {
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    left: min(4vw, -14rem);
+    z-index: 1000;
+    width: auto;
+    max-width: 25rem;
+    max-height: 25rem;
+    border: 1px solid black;
+    margin-top: 12px;
+    margin-left: 32px;
+    overflow: auto;
+    padding: 8px;
+  }
+
+  .tooltip:hover {
+    display: block;
+  }
+}
+
+.medium {
+  font-size: medium !important;
+}
+

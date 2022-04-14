@@ -1,10 +1,10 @@
-<section id="profile">
+<section id="profile" *ngIf="currentUser">
     <mat-grid-list [cols]="3" rowHeight="300px">
         <mat-grid-tile colspan="1">
             <img class="ofc img-border" src="https://avatars.dicebear.com/api/micah/{{currentUser.name}}.svg" alt="pp">
         </mat-grid-tile>
         <mat-grid-tile colspan="2" class="overflow-visible">
-            <div class="bio box">
+            <div class="bio">
                 <div class="bio-header">
                     <h2>{{currentUser.name}}</h2>
                 </div>

@@ -1,0 +1,34 @@
+<mat-toolbar color="primary" class="mat-elevation-z8 ">
+  <ng-container *ngIf="sidenav">
+    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">
+        menu
+      </mat-icon>
+      <mat-icon *ngIf="sidenav.opened">
+        close
+      </mat-icon>
+    </button>
+  </ng-container>
+
+  <button mat-icon-button>
+    <mat-icon>speaker_notes</mat-icon>
+  </button>
+  <span routerLink="/home" class="cp">Smart Space</span>
+  <span class="menu-spacer"></span>
+  <app-breadcrumb></app-breadcrumb>
+  <ng-container *ngIf="currentUser">
+    <button routerLink="/dashboard" mat-icon-button aria-label="user profile with menu" class="w-auto">
+      <mat-icon class="pr-5px">account_circle</mat-icon>
+      <span>{{currentUser.data.user.username}}</span>
+    </button>
+    <button mat-icon-button (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </ng-container>
+  <ng-container *ngIf="!currentUser">
+    <div fxShow fxHide.lt-md class="navbar">
+      <button mat-raised-button color="primary" routerLink="/login" routerLinkActive="active">Login</button>
+      <button mat-raised-button color="primary" routerLink="/signup" routerLinkActive="active">Signup</button>
+    </div>
+  </ng-container>
+</mat-toolbar>

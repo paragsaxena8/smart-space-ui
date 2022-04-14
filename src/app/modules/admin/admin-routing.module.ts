@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BlogActionComponent } from './components/blog-action/blog-action.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -8,8 +9,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        data: {
+          title: 'Dashboard',
+        },
         component: DashboardComponent,
       },
+      {
+        path: 'create',
+        data: {
+          title: 'Create Blog',
+        },
+        component:BlogActionComponent
+      }
     ],
   },
 ];
