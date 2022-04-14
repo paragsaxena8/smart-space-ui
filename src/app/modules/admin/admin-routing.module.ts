@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlogActionComponent } from './components/blog-action/blog-action.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -19,8 +20,15 @@ const routes: Routes = [
         data: {
           title: 'Create Blog',
         },
-        component:BlogActionComponent
-      }
+        component: BlogActionComponent,
+      },
+      {
+        path: 'profile',
+        data: {
+          title: 'Profile',
+        },
+        component: ProfileComponent,
+      },
     ],
   },
 ];

@@ -7,8 +7,8 @@ export interface UserData {
   photo: string;
   createdAt: Date;
   bio: string;
+  active: boolean;
 }
-
 
 export interface Data {
   user: UserData;

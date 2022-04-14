@@ -1,67 +1,73 @@
-<section id="createBlog" class="wrapper overflow-auto h-100">
-    <div class="box bg-accent full-box">
-        <h2 class="accent">Create Blog</h2>
+<section id="createBlog" class="wrapper">
+    <div class="box bg-accent full-box admin-layout">
+        <div class="d-flex jcb admin-layout-header">
+            <h2 class="accent admin-layout-title">Create Blog</h2>
+        </div>
 
-        <div class="content">
+        <div class="content admin-layout-body">
             <form class="form" [formGroup]="form" (ngSubmit)="onSubmit(form)">
-                <mat-card-content>
-                    <mat-form-field class="full-width">
-                        <input matInput type="text" name="title" formControlName="title" placeholder="Enter Blog Name"
-                            required="true">
-                        <mat-error *ngIf="title.hasError('required')">
-                            Blog Name is required
-                        </mat-error>
-                    </mat-form-field>
-                    <div class="editor my-1">
-                        <ngx-editor-floating-menu [editor]="editor"></ngx-editor-floating-menu>
-                        <ngx-editor [editor]="editor" formControlName="content" required name="content"
-                            [placeholder]="'Blog Content here...'"></ngx-editor>
-                    </div>
+                <mat-card>
+                    <mat-card-content>
+                        <mat-form-field class="full-width">
+                            <input matInput type="text" name="title" formControlName="title"
+                                placeholder="Enter Blog Name" required="true">
+                            <mat-error *ngIf="title.hasError('required')">
+                                Blog Name is required
+                            </mat-error>
+                        </mat-form-field>
+                        <div class="editor my-1">
+                            <ngx-editor-floating-menu [editor]="editor"></ngx-editor-floating-menu>
+                            <ngx-editor [editor]="editor" formControlName="content" required name="content"
+                                [placeholder]="'Blog Content here...'"></ngx-editor>
+                        </div>
 
-                    <mat-grid-list [cols]="2" rowHeight="250px">
-                        <mat-grid-tile colspan="1" class="dropzone__outline">
-                            <div class="medium dropzone__upload">
-                                <img *ngIf="imageData" [src]="imageData" width="auto" height="200px"
-                                    [alt]="form.value.title" />
-                                <div (click)="uploadFile.click()" class="text-center">
-                                    <button type="button" (click)="imageUploadError = 'Featured Image is required'"
-                                        mat-raised-button color="primary">Choose Image &hellip;</button>
-                                    <input #uploadFile (change)="fileChangeEvent($event)" type='file'
-                                        [style.display]="'none'" accept="image/*" single> {{myfilename}}
-                                    &nbsp;
+                        <mat-grid-list [cols]="2" gutterSize="10px" rowHeight="250px">
+                            <mat-grid-tile colspan="1" class="dropzone__outline">
+                                <div class="medium dropzone__upload">
+                                    <img *ngIf="imageData" [src]="imageData" width="auto" height="200px"
+                                        [alt]="form.value.title" />
+                                    <div (click)="uploadFile.click()" class="text-center">
+                                        <button type="button" (click)="imageUploadError = 'Featured Image is required'"
+                                            mat-raised-button color="primary">Choose Image &hellip;</button>
+                                        <input #uploadFile (change)="fileChangeEvent($event)" type='file'
+                                            [style.display]="'none'" accept="image/*" single> {{myfilename}}
+                                        &nbsp;
+                                    </div>
+                                    <mat-error *ngIf="imageUploadError && image.hasError('required')">
+                                        {{imageUploadError}}
+                                    </mat-error>
                                 </div>
-                                <mat-error *ngIf="imageUploadError && image.hasError('required')">
-                                    {{imageUploadError}}
-                                </mat-error>
-                            </div>
-                        </mat-grid-tile>
-                        <mat-grid-tile colspan="1">
-                            <div class="otherAttr">
-                                <mat-form-field class="full-width">
-                                    <mat-label>Category</mat-label>
-                                    <mat-select formControlName="category">
-                                        <mat-option *ngFor="let category of (categories|async)" [value]="category._id">
-                                            <span [matTooltip]="category.description">{{category.name}}</span>
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                                <mat-form-field class="full-width">
-                                    <mat-label>Tags</mat-label>
-                                    <mat-select formControlName="tags" multiple>
-                                        <mat-option *ngFor="let tag of (tagList|async)" [value]="tag._id">{{tag.name}}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                            </div>
+                            </mat-grid-tile>
+                            <mat-grid-tile colspan="1">
+                                <div class="otherAttr">
+                                    <mat-form-field class="full-width">
+                                        <mat-label>Category</mat-label>
+                                        <mat-select formControlName="category">
+                                            <mat-option *ngFor="let category of (categories|async)"
+                                                [value]="category._id">
+                                                <span [matTooltip]="category.description">{{category.name}}</span>
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field class="full-width">
+                                        <mat-label>Tags</mat-label>
+                                        <mat-select formControlName="tags" multiple>
+                                            <mat-option *ngFor="let tag of (tagList|async)" [value]="tag._id">
+                                                {{tag.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
 
-                        </mat-grid-tile>
-                    </mat-grid-list>
+                            </mat-grid-tile>
+                        </mat-grid-list>
 
-                    <button type="submit" mat-raised-button [disabled]="form.invalid" color="primary"
-                        class="btn-sm my-1">
-                        Create Blog
-                    </button>
-                </mat-card-content>
+                        <button type="submit" mat-raised-button [disabled]="form.invalid" color="primary"
+                            class="btn-sm my-1">
+                            Create Blog
+                        </button>
+                    </mat-card-content>
+                </mat-card>
 
             </form>
         </div>

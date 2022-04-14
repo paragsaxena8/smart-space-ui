@@ -42,4 +42,9 @@ export class LayoutComponent implements OnInit {
         ? this._auth.currentUserValue.data.user
         : null;
   }
+
+  logout() {
+    localStorage.removeItem('currentUser');
+    location.reload();
+  }
 }

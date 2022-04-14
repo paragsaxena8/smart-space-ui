@@ -17,15 +17,11 @@
                     <mat-icon>plus_one</mat-icon>&nbsp;
                     <span>Create Blog</span>
                 </a>
-                <a mat-list-item routerLink="/profile" class="text-light" routerLinkActive="active">
+                <a mat-list-item [routerLink]="['dashboard/profile']" class="text-light" routerLinkActive="active">
                     <mat-icon>person</mat-icon>&nbsp;
                     <span>Profile</span>
                 </a>
-                <a mat-list-item routerLink="/settings" class="text-light" routerLinkActive="active">
-                    <mat-icon>settings</mat-icon>&nbsp;
-                    <span>Settings</span>
-                </a>
-                <a mat-list-item routerLink="/logout" class="text-light" routerLinkActive="active">
+                <a mat-list-item (click)="logout()" class="text-light" routerLinkActive="active">
                     <mat-icon>exit_to_app</mat-icon>&nbsp;
                     <span>Logout</span>
                 </a>
@@ -37,22 +33,7 @@
                 <mat-icon>home</mat-icon>
                 <span>Back to Home</span>
             </button>
-            <button mat-button class="menu-button">
-                <mat-icon>person</mat-icon>
-                <span>Blogs</span>
-            </button>
-            <button mat-button class="menu-button">
-                <mat-icon>info</mat-icon>
-                <span>Category</span>
-            </button>
-            <button mat-button class="menu-button">
-                <mat-icon>help</mat-icon>
-                <span>Tags</span>
-            </button>
-            <button mat-button class="menu-button">
-                <mat-icon>help</mat-icon>
-                <span>Tags</span>
-            </button>
+
         </mat-sidenav>
         <mat-sidenav-content>
             <div class="content mat-elevation-z8">

@@ -6,9 +6,10 @@ import { BlogActionComponent } from './components/blog-action/blog-action.compon
 
 import { NgxEditorModule } from 'ngx-editor';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
-  declarations: [DashboardComponent, BlogActionComponent],
+  declarations: [DashboardComponent, BlogActionComponent, ProfileComponent],
   imports: [CommonModule, AdminRoutingModule, SharedModule, NgxEditorModule],
 })
 export class AdminModule {}

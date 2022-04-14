@@ -602,3 +602,32 @@ mat-divider {
   padding: 0 2rem;
   justify-content: flex-start;
 }
+
+.admin-layout {
+  padding: 60px 30px;
+  overflow: auto;
+  height: calc(100vh - 7em);
+
+  &-header {
+    width: fit-content;
+    border: 1px solid #fff;
+    overflow: auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+  &-title {
+    text-transform: capitalize;
+    // text-decoration: overline;
+    font-size: 1.2rem !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+    letter-spacing: 1px !important;
+    margin: 0.3125rem !important;
+  }
+
+  &-body {
+    margin: 0 !important;
+  }
+}
