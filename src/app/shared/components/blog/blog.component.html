@@ -1,6 +1,7 @@
-<mat-grid-list [cols]="mybreakpoint" rowHeight="400px" gutterSize="10px" *ngIf="(allBlogs$| async) as blogs">
-    <mat-grid-tile *ngFor="let blog of blogs">
-        <mat-card class="blog-card">
+<div class="grid-container" *ngIf="(allBlogs$| async) as blogs">
+
+    <div *ngFor="let blog of blogs">
+        <mat-card>
             <mat-card-header>
                 <img mat-card-avatar [src]="blog.author.photo" class="header-min-logo" alt="author picture">
                 <mat-card-title class="cp" (click)="openPost(blog)" [innerText]="toTitleCase(blog.title)">
@@ -12,12 +13,16 @@
                     <span>Created At {{blog.createdAt | date}}</span>
                 </mat-card-subtitle> -->
             </mat-card-header>
-            <div class="card-img">
+            <!-- <div class="card-img">
                 <img class="ofc" mat-card-image src="{{blog.featuredImage}}" alt="{{blog.title}}">
-            </div>
+            </div> -->
             <mat-card-content>
                 <div class="blog-summary" [innerHTML]="htmlToPlaintext(blog.summary)"></div>
             </mat-card-content>
+            <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+            </mat-card-actions>
         </mat-card>
-    </mat-grid-tile>
-</mat-grid-list>
+    </div>
+</div>

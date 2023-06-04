@@ -37,7 +37,15 @@ export class BlogActionComponent implements OnInit, OnDestroy {
     private _auth: AuthService,
     private _snackBar: MatSnackBar,
     private router: Router
-  ) {}
+  ) {
+    this.editor.commands
+      .backgroundColor('black')
+      .textColor('red')
+      .insertText('Hello world!')
+      .focus()
+      .scrollIntoView()
+      .exec();
+  }
   ngOnDestroy(): void {
     this.editor.destroy();
   }
@@ -95,7 +103,6 @@ export class BlogActionComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(d: FormGroup) {
-
     if (d.valid) {
       const htmlDOC = toHTML(d.value.content);
       console.log('Blog is ready to be posted');
