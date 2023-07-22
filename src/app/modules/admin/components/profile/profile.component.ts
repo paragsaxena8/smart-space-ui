@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -10,17 +10,17 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class ProfileComponent implements OnInit {
   editEnabled = false;
   profileData: any;
-  form: FormGroup = new FormGroup({
-    userName: new FormControl('', [
+  form: UntypedFormGroup = new UntypedFormGroup({
+    userName: new UntypedFormControl('', [
       Validators.required,
       Validators.minLength(3),
     ]),
-    name: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    role: new FormControl('', [Validators.required]),
-    bio: new FormControl('', [Validators.required]),
-    active: new FormControl('', [Validators.required]),
-    photo: new FormControl('', [Validators.required]),
+    name: new UntypedFormControl('', [Validators.required]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    role: new UntypedFormControl('', [Validators.required]),
+    bio: new UntypedFormControl('', [Validators.required]),
+    active: new UntypedFormControl('', [Validators.required]),
+    photo: new UntypedFormControl('', [Validators.required]),
   });
   constructor(private _auth: AuthService) {}
 

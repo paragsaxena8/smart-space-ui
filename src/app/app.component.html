@@ -1,6 +1,54 @@
 <!-- <mat-spinner class="loadingSpinner" [diameter]="50" *ngIf="spinner.visibility | async">
 </mat-spinner> -->
-<router-outlet *ngIf="isActive"></router-outlet>
+<!-- <router-outlet *ngIf="isActive"></router-outlet> -->
+
+<!-- Admin Layout -->
+<ng-container *ngIf="layout === 'admin'">
+    <app-navigation [sidenav]="sidenav"></app-navigation>
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
+            <img class="avatar mat-elevation-z8"
+                src="https://avatars.dicebear.com/api/micah/{{currentUser?.name}}.svg" />
+            <h4 class="name">{{currentUser?.name}}</h4>
+            <mat-divider></mat-divider>
+            <mat-nav-list>
+                <mat-list-item role="listitem" [routerLink]="['/dashboard']" class="text-light"
+                    routerLinkActive="active">
+                    <span>Dashboard</span>
+                </mat-list-item>
+                <mat-list-item [routerLink]="['dashboard/create']" class="text-light" routerLinkActive="active">
+                    <span>Create Blog</span>
+                </mat-list-item>
+                <mat-list-item [routerLink]="['dashboard/profile']" class="text-light" routerLinkActive="active">
+                    <span>Profile</span>
+                </mat-list-item>
+                <mat-list-item (click)="logout()" class="text-light" routerLinkActive="active">
+                    <span>Logout</span>
+                </mat-list-item>
+            </mat-nav-list>
+
+            <mat-divider></mat-divider>
+
+            <button mat-button class="menu-button" routerLink="/blog">
+                <span>Back to Home</span>
+            </button>
+
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="content">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</ng-container>
+
+<!-- Home Layout -->
+<ng-container *ngIf="layout === 'default'">
+    <app-navigation></app-navigation>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</ng-container>
 
 <ng-template #notFound>
     <div class="service-down" *ngIf="!isActive">

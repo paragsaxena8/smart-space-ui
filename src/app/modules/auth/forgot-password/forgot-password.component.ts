@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/core/services/data.service';
 
 @Component({
@@ -8,8 +8,8 @@ import { DataService } from 'src/app/core/services/data.service';
   styleUrls: ['./forgot-password.component.scss'],
 })
 export class ForgotPasswordComponent implements OnInit {
-  form!: FormGroup;
-  constructor(private fb: FormBuilder, private ds: DataService) {}
+  form!: UntypedFormGroup;
+  constructor(private fb: UntypedFormBuilder, private ds: DataService) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -21,7 +21,7 @@ export class ForgotPasswordComponent implements OnInit {
     return this.form.get('email');
   }
 
-  submit(d: FormGroup) {
+  submit(d: UntypedFormGroup) {
     console.log(d.value);
     // if (d.valid) {
     //   this.ds.postData('/users/forgotPassword', d.value).subscribe({

@@ -7,20 +7,25 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { ResetPasswordComponent } from './modules/auth/reset-password/reset-password.component';
 import { SignupComponent } from './modules/auth/signup/signup.component';
 import { VerifyAccountComponent } from './modules/auth/verify-account/verify-account.component';
+import { StartupComponent } from './core/startup/startup.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/blog', pathMatch: 'full' },
   {
     path: '',
-    component: LayoutComponent,
     data: {
       layout: 'default',
     },
     children: [
+      { path: '', component: StartupComponent },
       {
         path: 'blog',
         loadChildren: () =>
           import('./modules/home/home.module').then((m) => m.HomeModule),
+      },
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./modules/admin/admin.module').then((m) => m.AdminModule),
       },
       {
         path: 'login',
@@ -40,8 +45,8 @@ export const routes: Routes = [
       },
       {
         path: 'verify/:token',
-        component: VerifyAccountComponent
-      }
+        component: VerifyAccountComponent,
+      },
     ],
   },
   {

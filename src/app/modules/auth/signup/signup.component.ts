@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
-  FormGroup,
+  UntypedFormControl,
+  UntypedFormGroup,
   Validators,
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,19 +14,19 @@ import { DataService } from 'src/app/core/services/data.service';
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent implements OnInit {
-  form: FormGroup = new FormGroup({
-    name: new FormControl('', [Validators.required]),
-    username: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [
+  form: UntypedFormGroup = new UntypedFormGroup({
+    name: new UntypedFormControl('', [Validators.required]),
+    username: new UntypedFormControl('', [Validators.required]),
+    email: new UntypedFormControl('', [Validators.required, Validators.email]),
+    password: new UntypedFormControl('', [
       Validators.required,
       Validators.minLength(6),
     ]),
-    passwordConfirm: new FormControl('', [
+    passwordConfirm: new UntypedFormControl('', [
       Validators.required,
       Validators.minLength(6),
     ]),
-    bio: new FormControl(''),
+    bio: new UntypedFormControl(''),
   });
   showLoad = false;
   constructor(
@@ -82,7 +82,7 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  submit(d: FormGroup) {
+  submit(d: UntypedFormGroup) {
     if (d.valid) {
       this.showLoad = true;
       console.log(d.value);

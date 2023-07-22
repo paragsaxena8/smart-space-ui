@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { Validators } from 'ngx-editor';
 import { DataService } from 'src/app/core/services/data.service';
 
@@ -9,8 +9,8 @@ import { DataService } from 'src/app/core/services/data.service';
   styleUrls: ['./reset-password.component.scss'],
 })
 export class ResetPasswordComponent implements OnInit {
-  form!: FormGroup;
-  constructor(private fb: FormBuilder, private ds: DataService) {}
+  form!: UntypedFormGroup;
+  constructor(private fb: UntypedFormBuilder, private ds: DataService) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -27,7 +27,7 @@ export class ResetPasswordComponent implements OnInit {
     return this.form.get('cnfmPassword');
   }
 
-  submit(d: FormGroup) {
+  submit(d: UntypedFormGroup) {
     console.log(d.value);
     // if (d.valid) {
     //   this.ds.postData('/users/forgotPassword', d.value).subscribe({

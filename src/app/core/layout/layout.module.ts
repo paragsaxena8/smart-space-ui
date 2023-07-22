@@ -4,6 +4,7 @@ import { LayoutComponent } from './layout.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { DashboardComponent } from "src/app/modules/admin/components/dashboard/dashboard.component";
 
 @NgModule({
   declarations: [LayoutComponent],

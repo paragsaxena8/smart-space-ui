@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Editor, toDoc, toHTML, Toolbar } from 'ngx-editor';
@@ -51,12 +51,12 @@ export class BlogActionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      content: new FormControl(null, [Validators.required]),
-      image: new FormControl('', [Validators.required]),
-      category: new FormControl('', [Validators.required]),
-      tags: new FormControl('', [Validators.required]),
+    this.form = new UntypedFormGroup({
+      title: new UntypedFormControl('', [Validators.required]),
+      content: new UntypedFormControl(null, [Validators.required]),
+      image: new UntypedFormControl('', [Validators.required]),
+      category: new UntypedFormControl('', [Validators.required]),
+      tags: new UntypedFormControl('', [Validators.required]),
     });
   }
 
@@ -102,7 +102,7 @@ export class BlogActionComponent implements OnInit, OnDestroy {
     }
   }
 
-  onSubmit(d: FormGroup) {
+  onSubmit(d: UntypedFormGroup) {
     if (d.valid) {
       const htmlDOC = toHTML(d.value.content);
       console.log('Blog is ready to be posted');
