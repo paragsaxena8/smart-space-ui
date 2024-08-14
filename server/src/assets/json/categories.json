@@ -1,0 +1,22 @@
+[{
+  "_id": {
+    "$oid": "61e57e96a95dd9454e87b231"
+  },
+  "name": "Uncategories",
+  "description": "Items which don't have any category to assign",
+  "slug": "uncategories"
+},{
+  "_id": {
+    "$oid": "61f8c44a35be5fd39e396d39"
+  },
+  "name": "test",
+  "description": "Items which don't have any category to assign",
+  "slug": "test"
+},{
+  "_id": {
+    "$oid": "62012a7e4ecff27ced336036"
+  },
+  "name": "New category",
+  "description": "Items which don't have any category to assign",
+  "slug": "new-category"
+}]

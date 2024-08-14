@@ -1,0 +1,57 @@
+[{
+  "_id": {
+    "$oid": "61f8c1847062da9d6592ebf3"
+  },
+  "username": "admin",
+  "name": "Parag Saxena",
+  "email": "saxenaparag8@gmail.com",
+  "password": "$2a$12$z/ipkNWRg6DanW1SCtLPUu3/LLpHIMtuOPDy8HaYGgEBhoRAq0pzq",
+  "active": true,
+  "role": "admin",
+  "bio": "Hello iam Parag Saxena, new member of blog",
+  "createdAt": {
+    "$date": "2022-02-01T05:13:40.314Z"
+  }
+},{
+  "_id": {
+    "$oid": "62001f6678280d7bd0c835f8"
+  },
+  "username": "paragsaxena2",
+  "name": "Parag2 Saxena",
+  "email": "mnisxn@gmail.com",
+  "password": "$2a$12$F3XHbP4SjzAepeJOFZS.KegMJOTK2m49pkS0T8pqAsmyz26hhe/Ju",
+  "active": true,
+  "role": "user",
+  "bio": "Hello iam Parag Saxena, new member of blog",
+  "createdAt": {
+    "$date": "2022-02-06T19:20:06.136Z"
+  }
+},{
+  "_id": {
+    "$oid": "62001f7478280d7bd0c835fc"
+  },
+  "username": "paragsaxen32",
+  "name": "Saxena",
+  "email": "m.nisxn@gmail.com",
+  "password": "$2a$12$6D5YYdoxOXV0rDT0EUpyuu5Quis2r.xt4P2711aBZyppsF.1AxFG2",
+  "active": true,
+  "role": "user",
+  "bio": "Hello iam Parag Saxena, new member of blog",
+  "createdAt": {
+    "$date": "2022-02-06T19:20:20.516Z"
+  }
+},{
+  "_id": {
+    "$oid": "62001f8378280d7bd0c83600"
+  },
+  "username": "paragsaxen.2",
+  "name": "Saxena Parag",
+  "email": "m.n.isxn@gmail.com",
+  "password": "$2a$12$k2Gnx9RFN.YenVdXue3eEui1BbRJi4REPQeTAscDJCAzsptJqJin.",
+  "active": true,
+  "role": "user",
+  "bio": "Hello iam Parag Saxena, new member of blog",
+  "createdAt": {
+    "$date": "2022-02-06T19:20:35.016Z"
+  }
+}]

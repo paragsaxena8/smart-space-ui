@@ -1,0 +1,801 @@
+{
+	"info": {
+		"_postman_id": "4b9a6d33-a34e-40d7-a7e4-b2820b370631",
+		"name": "Smart Space",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/users/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"photo\": \"./assets/images/user.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/users/62043f42716c08f91eac21ce",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"62043f42716c08f91eac21ce"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/5c8a23c82f8fb814b56fa18d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"5c8a23c82f8fb814b56fa18d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/users/6203a1d6a1c3084acb74d6e0",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"6203a1d6a1c3084acb74d6e0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Username Availability ",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"devxd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/users/checkusername",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"checkusername"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{jwt}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Blogs",
+			"item": [
+				{
+					"name": "Get All Blogs",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/blogs/",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"blogs",
+								""
+							],
+							"query": [
+								{
+									"key": "user",
+									"value": "62097093e9d75589690d7db7",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Blog",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Fifth blog\",\r\n    \"body\": \"Repudiandae recusandae illum earum, facere quis ex id minus commodi et repellendus. Debitis reprehenderit tenetur perspiciatis enim deleniti quia provident unde amet, culpa voluptas similique animi, quae explicabo officiis aspernatur. Eaque mollitia voluptas architecto deserunt maiores debitis maxime minima quisquam aliquid dignissimos optio facilis placeat praesentium sed, molestias cupiditate laboriosam, voluptate iure. Veniam saepe ullam sed! Dolorem sapiente porro inventore. Eius dolores rem doloribus? Est nobis perspiciatis non aliquid maxime temporibus eos quo, nulla ipsa, magni quisquam nihil explicabo. Id voluptatum officiis quod! Minima quia cum sequi repellat commodi expedita. Unde iste illo veniam aliquam nemo suscipit, voluptates pariatur tempora mollitia et dolores aspernatur! Quidem assumenda blanditiis, sapiente, nihil iusto omnis rerum expedita asperiores, adipisci odit eum consequatur fugiat mollitia! Perspiciatis, atque! Explicabo illo perferendis debitis illum inventore quae perspiciatis enim, necessitatibus nulla modi laborum reprehenderit ad pariatur blanditiis consequuntur harum voluptatibus dolore iure eum unde libero earum. Natus, perferendis! Quidem sapiente perferendis quos corporis omnis alias veritatis voluptatem quasi officia quibusdam, quo eligendi soluta eum repudiandae excepturi odit voluptatum iusto ducimus ipsum quis? Repellendus optio dicta tempore dolor ducimus. Recusandae illum eos ab dolore id hic sed doloremque in, assumenda aut perspiciatis commodi tempora sapiente. Ducimus, minima vel eligendi culpa aspernatur suscipit dolorem deleniti cupiditate porro dignissimos in. Totam. Eum debitis nemo, ab impedit autem ratione error placeat velit quam nam, modi quae ullam suscipit et, dolores facilis! Veniam tempore nobis sed reiciendis dolore ex quia saepe quae ipsa. Dolores labore dignissimos modi, reprehenderit nihil corrupti nam quas architecto quasi, dolor libero voluptatibus! Deleniti, eum odio nisi magnam laboriosam ad quisquam delectus maxime voluptate! Et omnis aperiam labore nisi! Esse asperiores repellendus consequuntur, veritatis quia at cumque autem laboriosam possimus perspiciatis magni iure totam voluptate ipsa labore hic odio voluptatibus excepturi commodi laborum. Doloremque quisquam earum quo aut maxime? Quam quibusdam atque, officia dolorem perferendis eius voluptas necessitatibus quod? Odio aliquid quasi quidem assumenda natus aspernatur veritatis inventore, doloribus ducimus possimus dolore doloremque corporis sint reprehenderit! Ullam, atque possimus. Pariatur consectetur possimus quia! Dicta doloremque magni expedita, error consectetur corrupti a ipsam vero rerum excepturi modi blanditiis voluptatibus esse velit impedit est nobis omnis facere. Ullam placeat fuga deleniti? In ab illum obcaecati autem quae modi labore a, tempore sequi facere ipsa officiis quis quibusdam! Ad, quia voluptatem ratione expedita nihil esse praesentium natus vero corrupti labore blanditiis nam. Magnam, laborum deserunt. Doloremque accusantium rerum dolore sit repudiandae temporibus, assumenda quasi voluptas aliquam in voluptates? Omnis, optio recusandae, commodi praesentium quis fugiat labore ut ad, eligendi exercitationem suscipit non? Mollitia impedit eveniet animi beatae quia aliquid veniam alias eos? Nihil esse dolore temporibus inventore explicabo soluta saepe, libero non iure suscipit? Velit praesentium eius incidunt vero, itaque omnis distinctio! Itaque nostrum, aliquid odit sequi iure reprehenderit illum deleniti voluptatum vero hic magni mollitia perspiciatis iusto at enim! Recusandae a perspiciatis iusto amet pariatur itaque explicabo voluptas perferendis, facilis nulla. Quia provident dolores vero impedit. Laboriosam illo cumque tempora corporis facilis voluptates. Velit, expedita. Temporibus eligendi nostrum unde totam voluptatum eius, quidem fugiat harum aperiam est reiciendis, nobis similique optio. Sit alias sunt modi rerum architecto? Ratione, temporibus nulla mollitia corporis exercitationem incidunt quibusdam itaque, animi corrupti aperiam rerum dolores eos vitae similique? Suscipit iste, modi commodi alias accusamus consequuntur! Nisi ab minus tempore maiores, illum numquam, unde pariatur animi aliquam corrupti est molestiae a accusantium aut atque optio repudiandae asperiores? Quidem voluptatum ut perferendis corrupti illum praesentium ducimus nulla. Exercitationem tempore tenetur reprehenderit placeat officiis enim, culpa dolorum esse sunt delectus nesciunt nisi? Ex nesciunt deleniti, eius aperiam, omnis sequi modi laudantium repellendus cumque provident possimus impedit ea illum. Dolore ratione, officiis earum omnis illo eius quaerat sunt iste nemo laudantium, voluptatibus nihil exercitationem minima rerum, repellendus alias! Asperiores quis voluptate laborum magni, quibusdam blanditiis nam nemo excepturi tempore! Eveniet sed consequuntur laudantium ducimus quam? Numquam nobis rem, soluta minima accusantium unde libero iste neque ad, iusto expedita quae ipsum quisquam. Est praesentium facere laboriosam quis aut nisi exercitationem! Recusandae consectetur at eaque, ratione maxime iusto magni, eveniet corrupti voluptas non totam quod odio id accusantium numquam voluptatem fugit vel nostrum, nemo possimus nisi velit optio iste harum. Ad. Nihil error asperiores cum tenetur ipsam veniam saepe adipisci similique vitae a esse pariatur unde reiciendis deleniti veritatis, at nobis ea labore, aperiam laudantium ullam eligendi! Molestiae impedit repudiandae odio. Ratione odit itaque iste ab adipisci, tenetur, neque beatae velit rem, voluptatibus commodi modi odio et quis. Aspernatur nesciunt, totam ipsam temporibus expedita veniam quo, unde maxime vero commodi at. Nam ducimus molestiae, impedit repellendus debitis odit nihil ea placeat soluta. Magni accusamus ex nesciunt nihil eligendi. Neque, in tempore. Minima magnam voluptas quibusdam ab totam quod atque architecto molestiae. Magnam dolor reiciendis omnis neque mollitia a ab odio totam, officiis non enim laudantium illum sapiente maxime temporibus commodi voluptate fugit, corporis aperiam. Eligendi facilis impedit iusto voluptatem architecto deleniti. Dolore, vero? Laboriosam consectetur distinctio hic nam sint cum! Nemo mollitia omnis voluptas dolores distinctio, similique odio, iste unde vitae iusto numquam eum nam voluptatum quod sed earum explicabo est. Laboriosam iste obcaecati dolorem perferendis sunt minus libero quasi ratione eligendi inventore mollitia tempore velit, facilis eius, laborum voluptatum necessitatibus quos nihil, voluptatibus et! Soluta dignissimos velit minima veritatis at. Beatae laudantium odio, repudiandae at libero rerum sunt odit, quam architecto impedit commodi facilis, voluptatibus dicta quis et nobis vero quaerat magnam consectetur debitis. Quae nesciunt rerum ab quos eveniet! Nihil nostrum nam harum obcaecati mollitia omnis ducimus nisi earum voluptatibus sed fugiat perferendis, sapiente in unde optio temporibus, at officia molestias accusantium laboriosam ex. Praesentium quam saepe sit maiores! \",\r\n    \"author\": \"62097093e9d75589690d7db7\",\r\n    \"category\": \"62042d684084ba9b335a5a47\",\r\n    \"tags\": [\r\n        \"62044513271bf3c26a754a42\"\r\n    ],\r\n    \"featuredImage\": \"./assets/images/4.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/blogs",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"blogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Blog",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"My First Blog\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/blogs/61ddf93d3dc0e26bb1a6caed",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"blogs",
+								"61ddf93d3dc0e26bb1a6caed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get A Blog",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/blogs/test-blog-101",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"blogs",
+								"test-blog-101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Blog",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/blogs/first-blog",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"blogs",
+								"first-blog"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{jwt}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SignUp User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"username\": \"admin\",\r\n   \"name\": \"Parag Saxena\",\r\n   \"email\": \"hello@iparagsaxena.in\",\r\n   \"password\": \"123456\",\r\n   \"passwordConfirm\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/users/signup",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"username\": \"admin\",\r\n   \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/users/login",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"hello@iparagsaxena.in\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/users/forgotPassword",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"forgotPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Token",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"12345678\",\r\n    \"passwordConfirm\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/users/resetPassword/0d42834e636640a42723ed1dc567d9a3f9c0f64e5f2fdd72f9ddcdb21385288a",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"users",
+								"resetPassword",
+								"0d42834e636640a42723ed1dc567d9a3f9c0f64e5f2fdd72f9ddcdb21385288a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/users/activate/82161dc017ee9894b56c4bafc80e03789c3dea39ad08649e405dbee8fc6a303b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"activate",
+								"82161dc017ee9894b56c4bafc80e03789c3dea39ad08649e405dbee8fc6a303b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Get All Category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/categories",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Uncategories f\",\r\n    \"description\": \"Items which don't have any category to assign\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/categories",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Category",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Uncategized\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/categories/6202b5a1c18ffcb884661542",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"categories",
+								"6202b5a1c18ffcb884661542"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/categories/6202b5a1c18ffcb884661542",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"categories",
+								"6202b5a1c18ffcb884661542"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "Get All Tags",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Uncategories f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/tags",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Tag",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Uncategories tag\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/tags",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Tags",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Programming cat\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/tags/6201703875bf6b35c1803ed0",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"tags",
+								"6201703875bf6b35c1803ed0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Tags",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/tags/6201703875bf6b35c1803ed0",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"tags",
+								"6201703875bf6b35c1803ed0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

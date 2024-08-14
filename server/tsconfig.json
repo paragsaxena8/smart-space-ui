@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": ["es6", "dom"],
+    "declaration": false,
+    "esModuleInterop": true,
+    "target": "ES2019",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "rootDir": "./",
+    "outDir": "./dist",
+  },
+  "include": ["src/**/*", "api/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
